@@ -41,6 +41,25 @@ map.setMapStyleV2({
 //测距功能
 var myDis = new BMapGLLib.DistanceTool(map);
 
+// 点击显示省市区
+map.addEventListener('click', function (e) {
+    var point = new BMapGL.Point(e.latlng.lng, e.latlng.lat);
+    var gc = new BMapGL.Geocoder();
+    gc.getLocation(point, function (rs) {
+        var opts = {
+            title: '行政区划归属',
+            width: 220,
+            height: 92
+        };
+        var infoStr = '<div>省：' + rs.addressComponents.province + '</div>'
+            + '<div>市：' + rs.addressComponents.city + '</div>'
+            + '<div>区：' + rs.addressComponents.district + '</div>';
+        var infoWindow = new BMapGL.InfoWindow(infoStr, opts);
+        map.openInfoWindow(infoWindow, point);
+    });
+});
+
+
 
 
 
@@ -62,6 +81,9 @@ zuobiaoShow()
 // 右键菜单显示
 rightMenu(map)
 
+//定位
+myLocation(map)
+
 
 
 
@@ -80,6 +102,8 @@ toInitBasemap(map)
 
 //绑定测距
 bondDistance(myDis)
+
+
 
 
 
@@ -250,4 +274,57 @@ function rightMenu(map) {
         menu.addItem(new BMapGL.MenuItem(txtMenuItem[i].text, txtMenuItem[i].callback, 100));
     }
     map.addContextMenu(menu);
+}
+
+
+//定位
+function myLocation(map) {
+
+    $('#myLocationbox').on('click', () => {
+
+        var localcity = new BMapGL.LocalCity();
+        localcity.get(e => {
+
+            map.setCenter(e.center, 8); // 初始化地图,设置中心点坐标和地图级别
+            
+            let poi =  new BMapGL.Point(e.center.lng.toFixed(3), e.center.lat.toFixed(3))
+
+
+            toInitPoint(poi)
+
+
+        })
+    })
+
+    //  输入：点  
+    //  添加点、瞬间弹窗
+    function toInitPoint(pointInit) {
+        marker = new BMapGL.Marker(pointInit)
+        // console.log(pointInit);
+        //全局变量
+        map.addOverlay(marker);
+
+        map.centerAndZoom(pointInit, 8)
+
+        var opts = {
+            width: 200,     // 信息窗口宽度
+            height: 100,     // 信息窗口高度
+            title: "坐标：" + `${pointInit.lng},${pointInit.lat}`, // 信息窗口标题
+            message: "选中点"
+        }
+
+        // 创建地理编码实例      
+        var myGeo = new BMapGL.Geocoder();
+        // 根据坐标得到地址描述    
+        myGeo.getLocation(pointInit, function (result) {
+            if (result) {
+                var infoWindow = new BMapGL.InfoWindow(result.address, opts);  // 创建信息窗口对象 
+
+                    map.openInfoWindow(infoWindow, pointInit); //开启信息窗口
+            }
+        });
+
+    }
+
+
 }
