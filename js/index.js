@@ -81,10 +81,11 @@ zuobiaoShow()
 // 右键菜单显示
 rightMenu(map)
 
-//定位
+//我的定位
 myLocation(map)
 
-
+//搜索定位
+searchLocation(map)
 
 
 // ————————————————————————————————————initArea的函数调用
@@ -276,7 +277,6 @@ function rightMenu(map) {
     map.addContextMenu(menu);
 }
 
-
 //定位
 function myLocation(map) {
 
@@ -286,45 +286,93 @@ function myLocation(map) {
         localcity.get(e => {
 
             map.setCenter(e.center, 8); // 初始化地图,设置中心点坐标和地图级别
-            
-            let poi =  new BMapGL.Point(e.center.lng.toFixed(3), e.center.lat.toFixed(3))
+
+            let poi = new BMapGL.Point(e.center.lng.toFixed(3), e.center.lat.toFixed(3))
 
 
-            toInitPoint(poi)
+            toInitPoint2(poi)
 
 
         })
     })
+}
+//  输入：点  
+//  添加点、瞬间弹窗
+function toInitPoint2(pointInit) {
+    marker = new BMapGL.Marker(pointInit)
+    // console.log(pointInit);
+    //全局变量
+    map.addOverlay(marker);
 
-    //  输入：点  
-    //  添加点、瞬间弹窗
-    function toInitPoint(pointInit) {
-        marker = new BMapGL.Marker(pointInit)
-        // console.log(pointInit);
-        //全局变量
-        map.addOverlay(marker);
+    map.centerAndZoom(pointInit, 8)
 
-        map.centerAndZoom(pointInit, 8)
-
-        var opts = {
-            width: 200,     // 信息窗口宽度
-            height: 100,     // 信息窗口高度
-            title: "坐标：" + `${pointInit.lng},${pointInit.lat}`, // 信息窗口标题
-            message: "选中点"
-        }
-
-        // 创建地理编码实例      
-        var myGeo = new BMapGL.Geocoder();
-        // 根据坐标得到地址描述    
-        myGeo.getLocation(pointInit, function (result) {
-            if (result) {
-                var infoWindow = new BMapGL.InfoWindow(result.address, opts);  // 创建信息窗口对象 
-
-                    map.openInfoWindow(infoWindow, pointInit); //开启信息窗口
-            }
-        });
-
+    var opts = {
+        width: 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title: "坐标：" + `${pointInit.lng},${pointInit.lat}`, // 信息窗口标题
+        message: "选中点"
     }
 
+    // 创建地理编码实例      
+    var myGeo = new BMapGL.Geocoder();
+    // 根据坐标得到地址描述    
+    myGeo.getLocation(pointInit, function (result) {
+        if (result) {
+            var infoWindow = new BMapGL.InfoWindow(result.address, opts);  // 创建信息窗口对象 
 
+            map.openInfoWindow(infoWindow, pointInit); //开启信息窗口
+        }
+    });
+
+}
+
+// 搜索地址功能
+function searchLocation(map) {
+
+    console.log(11111);
+
+
+
+
+    $('#searchLocationbox').on('click', () => {
+
+        var searchTxt = $("#searchTxt").val();
+
+        console.log(searchTxt);
+        //创建地址解析器实例
+        var myGeo = new BMapGL.Geocoder();
+        // 将地址解析结果显示在地图上，并调整地图视野
+        myGeo.getPoint(searchTxt, (point) => {
+            if (point) {
+
+                map.setCenter(point, 8); // 初始化地图,设置中心点坐标和地图级别
+
+                let poi = new BMapGL.Point(point.lng.toFixed(3), point.lat.toFixed(3))
+
+
+                toInitPoint2(poi)
+
+            } else {
+                alert('您选择的地址没有解析到结果！');
+            }
+        }, '北京市')
+
+
+    })
+
+    // $('#searchLocationbox').on('click', () => {
+
+    //     var localcity = new BMapGL.LocalCity();
+    //     localcity.get(e => {
+
+    //         map.setCenter(e.center, 8); // 初始化地图,设置中心点坐标和地图级别
+
+    //         let poi = new BMapGL.Point(e.center.lng.toFixed(3), e.center.lat.toFixed(3))
+
+
+    //         toInitPoint2(poi)
+
+
+    //     })
+    // })
 }
