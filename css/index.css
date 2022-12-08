@@ -56,6 +56,7 @@ body {
   background-color: #fff;
   overflow: auto;
   transition: all 0.5s;
+  font-size: 13px !important;
 }
 #main .list-group #basicFunc::-webkit-scrollbar,
 #main .list-group #basicFunc1::-webkit-scrollbar,
@@ -90,8 +91,11 @@ body {
 #main .list-group #basicFunc #huanchong #bufferFunc {
   font-weight: normal;
 }
+#main .list-group #basicFunc #openDis {
+  margin-top: 5px;
+}
 #main .list-group #basicFunc #initClear {
-  margin-top: 4px;
+  margin-top: 8px;
   margin-bottom: 10px;
   width: 100%;
 }
@@ -123,9 +127,8 @@ body {
   font-weight: normal;
 }
 #main .list-group #qita {
-  margin-top: 10px;
   height: 100%;
-  background-color: rgba(245, 242, 242, 0.974);
+  background-color: rgba(244, 238, 238, 0.443);
 }
 #main .list-group::-webkit-scrollbar {
   width: 0 !important;

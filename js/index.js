@@ -1,5 +1,5 @@
-import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance} from "./initArea.js";
-export { toInitPoint , map }
+import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance } from "./initArea.js";
+export { toInitPoint, map }
 
 
 var map = new BMapGL.Map('container', {
@@ -20,10 +20,6 @@ map.centerAndZoom(pointInit, 8); // 初始化地图,设置中心点坐标和地�
 map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
 
 
-//测距功能
-var myDis = new BMapGLLib.DistanceTool(map);
-//绑定测距
-bondDistance(myDis)
 
 // map.setHeading(64.5);   //设置地图旋转角度
 map.setTilt(53);       //设置地图的倾斜角度
@@ -42,7 +38,8 @@ map.setMapStyleV2({
 });
 
 
-
+//测距功能
+var myDis = new BMapGLLib.DistanceTool(map);
 
 
 
@@ -62,6 +59,10 @@ listInteract()
 zuobiaoShow()
 
 
+// 右键菜单显示
+rightMenu(map)
+
+
 
 
 // ————————————————————————————————————initArea的函数调用
@@ -77,7 +78,8 @@ initResetPoint(pointInit, map);
 //绑定显示底图事件
 toInitBasemap(map)
 
-
+//绑定测距
+bondDistance(myDis)
 
 
 
@@ -148,7 +150,7 @@ function toInitPoint(pointInit) {
             });
         }
     });
-  
+
     // marker.addEventListener("click", function () {
     //     // console.log(pointInit.lat, pointInit.lng);
     //     alert("标注坐标：" + pointInit.lat + ',' + pointInit.lng);
@@ -183,10 +185,69 @@ function listInteract() {
 }
 
 //显示实时坐标
-function zuobiaoShow(){
-    map.addEventListener('mousemove', function(e) {
+function zuobiaoShow() {
+    map.addEventListener('mousemove', function (e) {
 
         $('#zuobiao span').empty()
-        $('#zuobiao span').append( e.latlng.lng.toFixed(6)+ ', ' + e.latlng.lat.toFixed(6) )
-});
+        $('#zuobiao span').append(e.latlng.lng.toFixed(6) + ', ' + e.latlng.lat.toFixed(6))
+    });
+}
+
+// 右键菜单显示
+function rightMenu(map) {
+    var menu = new BMapGL.ContextMenu();
+    var txtMenuItem = [
+        {
+            text: '放大一级',
+            callback: function () {
+                map.zoomIn();
+            }
+        }, {
+            text: '缩小一级',
+            callback: function () {
+                map.zoomOut();
+            }
+        },
+        {
+            text: '全屏',
+            callback: function () {
+
+
+                var element = document.documentElement;		// 返回 html dom 中的root 节点 <html>
+                if (!$('body').hasClass('full-screen')) {
+                    $('body').addClass('full-screen');
+                    $('#alarm-fullscreen-toggler').addClass('active');
+                    // 判断浏览器设备类型
+                    if (element.requestFullscreen) {
+                        element.requestFullscreen();
+                    } else if (element.mozRequestFullScreen) {	// 兼容火狐
+                        element.mozRequestFullScreen();
+                    } else if (element.webkitRequestFullscreen) {	// 兼容谷歌
+                        element.webkitRequestFullscreen();
+                    } else if (element.msRequestFullscreen) {	// 兼容IE
+                        element.msRequestFullscreen();
+                    }
+                } else {			// 退出全屏
+                    console.log(document);
+                    $('body').removeClass('full-screen');
+                    $('#alarm-fullscreen-toggler').removeClass('active');
+                    //	退出全屏
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.webkitCancelFullScreen) {
+                        document.webkitCancelFullScreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+
+            }
+        }
+    ];
+    for (var i = 0; i < txtMenuItem.length; i++) {
+        menu.addItem(new BMapGL.MenuItem(txtMenuItem[i].text, txtMenuItem[i].callback, 100));
+    }
+    map.addContextMenu(menu);
 }

@@ -33,6 +33,9 @@
         src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=7Cc5Kmn672miPzG4qQhvlOrERcXMMinq"></script>
     <!-- 测距功能 -->
     <script src="./src/DistanceTool.js"></script>
+    <!-- 轨迹动画 -->
+    <script type="text/javascript" src="https://mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js"></script>
+
 </head>
 
 <body>
@@ -208,43 +211,34 @@
                 <div>
 
                     <!-- 第三模块——标题 -->
-                    <button type="button" class="list-group-item">Morbi leo risus<span class="caret pull-right"></span>
+                    <button type="button" class="list-group-item">扩展功能<span class="caret pull-right"></span>
                     </button>
 
 
                     <!-- 第三模块——内容 -->
                     <div id="basicFunc2">
-                        <div class="checkbox">
+                       <div>
+
+                        <div id="animLayer" class="radio">
                             <label>
-                                <input type="checkbox" value="">
-                                Option one is this and that&mdash;be sure to include why it's great
-                            </label>
-                        </div>
-                        <div class="checkbox disabled">
-                            <label>
-                                <input type="checkbox" value="" disabled>
-                                Option two is disabled
+                                <input type="radio" name="anim" >
+                                动画播放: 自定义视角
                             </label>
                         </div>
 
-                        <div class="radio">
+                        
+                        <div id="animGuijiLayer" class="radio">
                             <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                Option one is this and that&mdash;be sure to include why it's great
+                                <input type="radio" name="animGuiji" >
+                                动画播放：轨迹动画
                             </label>
                         </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                Option two can be something else and selecting it will deselect option one
-                            </label>
-                        </div>
-                        <div class="radio disabled">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-                                Option three is disabled
-                            </label>
-                        </div>
+
+                       </div>
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -278,6 +272,7 @@
     <script src="./js/initArea.js" type="module"></script>
 
     <script src="./js/secArea.js" type="module"> </script>
+    <script src="./js/thirArea.js" type="module"> </script>
 
 
 </body>
