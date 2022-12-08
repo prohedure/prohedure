@@ -26,7 +26,7 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- 地图api -->
     <script type="text/javascript"
@@ -63,21 +63,21 @@
                         <li id="map3"><a href="#">地球</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                aria-haspopup="true" aria-expanded="false">导航功能<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+
+
+                                <li><a href="#">驾车出行</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">公交出行</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><a href="#">步行</a></li>
                             </ul>
                         </li>
                     </ul>
                     <form class="navbar-form navbar-left">
                         <div class="form-group">
-                            <input id="searchTxt" type="text" class="form-control" placeholder="Search">
+                            <input id="searchTxt" type="text" class="form-control" placeholder="输入地址">
                         </div>
                         <button  id="searchLocationbox" type="button" class="btn btn-default">搜索</button>
                         <button id="myLocationbox" type="button" class="btn btn-default" >定位</button>
@@ -190,6 +190,14 @@
                     <!-- 第二模块——内容 -->
                     <div id="basicFunc1">
 
+
+                        <div id="poiLayer"  class="radio">
+                            <label>
+                                <input type="radio" name="poiInput"  >
+                                兴趣点
+                            </label>
+                        </div>
+
                         <div id="jiaotongLayer" class="radio">
                             <label>
                                 <input type="radio" name="jiaotong" value="option1">
@@ -197,12 +205,7 @@
                             </label>
                         </div>
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" id="optionsRadios2" value="option1">
-                                交通路线2
-                            </label>
-                        </div>
+        
 
 
                     </div>

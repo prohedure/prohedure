@@ -3,9 +3,10 @@ export { toInitPoint, map }
 
 
 var map = new BMapGL.Map('container', {
-    // 禁止地图旋转和倾斜可以通过配置项进行设置
-    // enableRotate: false,
-    // enableTilt: false
+    displayOptions: {
+        poi: false,
+
+    }
 }); // 创建Map实例
 
 
@@ -328,10 +329,6 @@ function toInitPoint2(pointInit) {
 
 // 搜索地址功能
 function searchLocation(map) {
-
-    console.log(11111);
-
-
 
 
     $('#searchLocationbox').on('click', () => {
