@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/secArea.css">
+    <link rel="stylesheet" href="./css/qita.css">
+
+    <!-- <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=gGh3qeOj82gsSO27xMD4GuW3aOb9S7ne">
+        </script> -->
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=U4xMMOLdbt1s04cMFphsvUx84NsEFeAs"></script>
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="nav">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-globe"></span></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul id="mapType" class="nav navbar-nav">
+                        <li id="map2" class="active"><a href="#">地图 <span class="sr-only">(current)</span></a></li>
+                        <li id="satellite"><a href="#">卫星</a></li>
+
+                        <li id="map3"><a href="#">地球</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <div id="main">
+        <!-- 地图 -->
+        <div id="container"></div>
+        <!-- 右侧信息 -->
+        <div class="list-group">
+
+            <!-- 地图加载区域 -->
+            <div>
+
+                <!-- 第一模块 -->
+                <div>
+
+
+
+                    <!-- 第一模块——标题 -->
+                    <button type="button" class="list-group-item">标注<span class="caret pull-right"></span></button>
+
+                    <!-- 第一模块——内容 -->
+                    <div id="basicFunc">
+
+                        <!-- <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="500">
+                      缓冲500
+                    </label>
+                  </div> -->
+
+                        <div id="initBasemapForm1" class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputName3">输入坐标：</label>
+                                <input name="jing" type="text" class="form-control input-sm" id="exampleInputName3"
+                                    placeholder="经度">
+                                <input name="wei" type="text" class="form-control input-sm" id="exampleInputName4"
+                                    placeholder="纬度">
+                            </div>
+
+                            <button class="btn btn-default btn-sm">添加点</button>
+                        </div>
+
+
+                        <!-- 缓冲功能 -->
+                        <div id="huanchong">
+                            <label id="bufferFunc">缓冲(km)：</label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox1" value="500"> 50
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox2" value="1000"> 100
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" id="inlineCheckbox3" value="1500"> 150
+                            </label>
+                        </div>
+
+
+                        <div id="initBasemapForm" class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputName2">研究区：</label>
+                                <input name="cityInput" type="text" class="form-control input-sm" id="exampleInputName2"
+                                    placeholder="城市">
+                            </div>
+
+                            <button class="btn btn-default btn-sm">添加</button>
+                        </div>
+
+                        <button id="initClear" type="button" class="btn btn-default btn-sm">清空/重置</button>
+
+
+                    </div>
+
+                </div>
+
+                <!-- 第二模块 -->
+                <div>
+
+                    <!-- 第二模块——标题 -->
+                    <button type="button" class="list-group-item">图层<span class="caret pull-right"></span>
+                    </button>
+
+                    <!-- 第二模块——内容 -->
+                    <div id="basicFunc1">
+
+                        <div id="jiaotongLayer" class="radio">
+                            <label>
+                                <input type="radio" name="jiaotong" value="option1">
+                                交通路线
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" id="optionsRadios2" value="option1">
+                                交通路线2
+                            </label>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- 第三模块 -->
+                <div>
+
+                    <!-- 第三模块——标题 -->
+                    <button type="button" class="list-group-item">Morbi leo risus<span class="caret pull-right"></span>
+                    </button>
+
+
+                    <!-- 第三模块——内容 -->
+                    <div id="basicFunc2">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Option one is this and that&mdash;be sure to include why it's great
+                            </label>
+                        </div>
+                        <div class="checkbox disabled">
+                            <label>
+                                <input type="checkbox" value="" disabled>
+                                Option two is disabled
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                Option one is this and that&mdash;be sure to include why it's great
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                Option two can be something else and selecting it will deselect option one
+                            </label>
+                        </div>
+                        <div class="radio disabled">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                                Option three is disabled
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他信息 -->
+            <div id="qita">
+             
+                    <div id="zuobiao">坐标： <span></span></div>
+                
+
+            </div>
+
+            <!-- <div>
+                <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+                <div></div>
+            </div>
+
+            <div>
+                <button type="button" class="list-group-item">Vestibulum at eros</button>
+                <div></div>
+            </div> -->
+
+        </div>
+
+    </div>
+
+    <script src="./js/initArea.js" type="module"></script>
+
+    <script src="./js/index.js" type="module"> </script>
+
+    <script src="./js/secArea.js" type="module"> </script>
+
+
+</body>
+
+</html>

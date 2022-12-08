@@ -1,0 +1,145 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  overflow: hidden;
+}
+#container {
+  height: 100%;
+  width: 90%;
+}
+#nav {
+  height: 50px !important;
+}
+.navbar {
+  /* height: 10%; */
+  margin: 0 !important;
+}
+#main {
+  background-color: blue;
+  display: flex;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  /* 设置滚动条的样式 */
+  /* 滚动槽 */
+  /* 滚动条滑块 */
+}
+#main #container {
+  flex: 1;
+}
+#main .list-group {
+  width: 290px;
+  height: 1900px;
+  background-color: #fff;
+  overflow: auto;
+  /* 设置滚动条的样式 */
+  /* 滚动槽 */
+  /* 滚动条滑块 */
+}
+#main .list-group .list-group-item span {
+  margin-top: 6px;
+}
+#main .list-group #basicFunc,
+#main .list-group #basicFunc1,
+#main .list-group #basicFunc2 {
+  padding: 0 15px;
+  padding-top: 5px;
+  height: 100%;
+  background-color: #fff;
+  overflow: auto;
+  transition: all 0.5s;
+}
+#main .list-group #basicFunc::-webkit-scrollbar,
+#main .list-group #basicFunc1::-webkit-scrollbar,
+#main .list-group #basicFunc2::-webkit-scrollbar {
+  width: 0 !important;
+}
+#main .list-group #basicFunc::-webkit-scrollbar,
+#main .list-group #basicFunc1::-webkit-scrollbar,
+#main .list-group #basicFunc2::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 8px;
+}
+#main .list-group #basicFunc::-webkit-scrollbar-track,
+#main .list-group #basicFunc1::-webkit-scrollbar-track,
+#main .list-group #basicFunc2::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+  background-color: #555;
+}
+#main .list-group #basicFunc::-webkit-scrollbar-thumb,
+#main .list-group #basicFunc1::-webkit-scrollbar-thumb,
+#main .list-group #basicFunc2::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #333;
+  /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+}
+#main .list-group #basicFunc {
+  font-size: 13px !important;
+}
+#main .list-group #basicFunc #huanchong {
+  margin-top: 8px;
+}
+#main .list-group #basicFunc #huanchong #bufferFunc {
+  font-weight: normal;
+}
+#main .list-group #basicFunc #initClear {
+  margin-top: 4px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+#main .list-group #basicFunc .checkbox-inline #inlineCheckbox3 {
+  margin-right: 10px;
+}
+#main .list-group #basicFunc #initBasemapForm,
+#main .list-group #basicFunc #initBasemapForm1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  justify-content: space-around;
+}
+#main .list-group #basicFunc #initBasemapForm label,
+#main .list-group #basicFunc #initBasemapForm1 label {
+  font-weight: normal;
+}
+#main .list-group #basicFunc #initBasemapForm #exampleInputName2.input-sm.form-control,
+#main .list-group #basicFunc #initBasemapForm1 #exampleInputName2.input-sm.form-control {
+  width: 150px;
+}
+#main .list-group #basicFunc #initBasemapForm #exampleInputName3.input-sm.form-control,
+#main .list-group #basicFunc #initBasemapForm1 #exampleInputName3.input-sm.form-control,
+#main .list-group #basicFunc #initBasemapForm #exampleInputName4.input-sm.form-control,
+#main .list-group #basicFunc #initBasemapForm1 #exampleInputName4.input-sm.form-control {
+  width: 60px;
+}
+#main .list-group #basicFunc #initBasemapForm button,
+#main .list-group #basicFunc #initBasemapForm1 button {
+  font-weight: normal;
+}
+#main .list-group #qita {
+  margin-top: 10px;
+  height: 100%;
+  background-color: rgba(245, 242, 242, 0.974);
+}
+#main .list-group::-webkit-scrollbar {
+  width: 0 !important;
+}
+#main .list-group::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 8px;
+}
+#main .list-group::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+  background-color: #555;
+}
+#main .list-group::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #333;
+  /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+}

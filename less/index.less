@@ -1,0 +1,206 @@
+html {
+    height: 100%
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: hidden;
+
+}
+
+#container {
+    height: 100%;
+    width: 90%
+}
+
+#nav {
+    height: 50px !important
+}
+
+.navbar {
+    /* height: 10%; */
+    margin: 0 !important;
+}
+
+#main {
+
+    // flex: 1;
+    background-color: blue;
+    display: flex;
+    align-content: center;
+    // flex-direction:column;
+    height: 100%;
+    width: 100%;
+
+    #container{
+        flex: 1;
+    }
+    .list-group {
+        width: 290px;
+        // min-width: 300px;
+        height: 1900px;
+        background-color: #fff;
+        overflow: auto;
+
+        .list-group-item span {
+            margin-top: 6px;
+        }
+
+        // 模块通用内容
+        //基本内容属性
+        #basicFunc,
+        #basicFunc1,
+        #basicFunc2 {
+            // margin-top: 11px;
+            padding: 0 15px;
+            padding-top: 5px;
+
+            height: 100%;
+            background-color: #fff;
+            overflow: auto;
+
+            // display: none;
+            transition: all .5s;
+        }
+
+        #basicFunc::-webkit-scrollbar,
+        #basicFunc1::-webkit-scrollbar,
+        #basicFunc2::-webkit-scrollbar {
+            width: 0 !important;
+        }
+
+        //设置滚动条显示隐藏
+        /* 设置滚动条的样式 */
+        #basicFunc::-webkit-scrollbar,
+        #basicFunc1::-webkit-scrollbar,
+        #basicFunc2::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 8px;
+        }
+
+        /* 滚动槽 */
+        #basicFunc::-webkit-scrollbar-track,
+        #basicFunc1::-webkit-scrollbar-track,
+        #basicFunc2::-webkit-scrollbar-track {
+            /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+            background-color: #555;
+        }
+
+        /* 滚动条滑块 */
+        #basicFunc::-webkit-scrollbar-thumb,
+        #basicFunc1::-webkit-scrollbar-thumb,
+        #basicFunc2::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            background: #333;
+            /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+        }
+
+
+
+        //第一模块——内容
+        #basicFunc {
+
+            font-size: 13px !important;
+
+
+            #huanchong{
+
+                margin-top: 8px;
+                #bufferFunc{
+
+                    font-weight: normal;
+    
+                }
+    
+            }
+
+            #initClear {
+                margin-top: 4px;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+    
+     
+            .checkbox-inline{
+
+                #inlineCheckbox3{
+                    margin-right: 10px;
+                }
+            }
+
+            #initBasemapForm,
+            #initBasemapForm1
+            {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                // display: flex;
+                justify-content: space-around;
+
+                label{
+                    font-weight: normal;
+                }
+
+                #exampleInputName2.input-sm.form-control
+                 {
+
+                    width: 150px;
+                }
+                #exampleInputName3.input-sm.form-control,
+                #exampleInputName4.input-sm.form-control
+                {
+
+                   width: 60px;
+               }
+
+
+                button{
+                    font-weight: normal;
+                }
+
+            }
+
+
+
+        }
+
+
+        // 其他信息
+        #qita {
+            margin-top: 10px;
+            // flex: 1;
+            height: 100%;
+            background-color: rgba(245, 242, 242, 0.974);
+        }
+    }
+
+    .list-group::-webkit-scrollbar {
+        width: 0 !important;
+    }
+
+    //设置滚动条显示隐藏
+    /* 设置滚动条的样式 */
+    .list-group::-webkit-scrollbar {
+        width: 5px;
+        border-radius: 8px;
+    }
+
+    /* 滚动槽 */
+    .list-group::-webkit-scrollbar-track {
+        /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+        background-color: #555;
+    }
+
+    /* 滚动条滑块 */
+    .list-group::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background: #333;
+        /* -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5); */
+    }
+}
