@@ -1,7 +1,10 @@
-export { initAreaBegin, initBuffer, toInitBasemap, initResetPoint }
+export { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance}
 import {toInitPoint} from "./index.js";
 
-//initarea区域初始化
+
+
+
+//initarea重置
 function initAreaBegin(map) {
 
     //重置按钮
@@ -12,7 +15,7 @@ function initAreaBegin(map) {
 
         //恢复层级
         map.setZoom(8);
-
+        map.setCenter(116.404, 39.915)
         //
         $('#bufferFunc input').val("");
     })
@@ -315,3 +318,13 @@ function showOneProvince(cityName, map) {
     });
 }
 
+
+
+
+
+// ————————————————————————————————————测距功能
+function bondDistance(myDis) {
+    $('#openDis').on('click', () => {
+        myDis.open()
+    })
+}

@@ -15,8 +15,9 @@
     <!-- <script type="text/javascript"
         src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=gGh3qeOj82gsSO27xMD4GuW3aOb9S7ne">
         </script> -->
-    <script type="text/javascript"
-        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=U4xMMOLdbt1s04cMFphsvUx84NsEFeAs"></script>
+    <!-- <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=U4xMMOLdbt1s04cMFphsvUx84NsEFeAs"></script> -->
+
 
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +26,13 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+    <!-- 地图api -->
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=7Cc5Kmn672miPzG4qQhvlOrERcXMMinq"></script>
+    <!-- 测距功能 -->
+    <script src="./src/DistanceTool.js"></script>
 </head>
 
 <body>
@@ -154,6 +161,14 @@
                             <button class="btn btn-default btn-sm">添加</button>
                         </div>
 
+
+
+                        <!-- 测试测距功能 -->
+                        <input id="openDis" class="btn btn-default btn-sm" type="button" value="测距">
+                        <!-- <input id="closeDis" type="button" value="X" > -->
+
+
+
                         <button id="initClear" type="button" class="btn btn-default btn-sm">清空/重置</button>
 
 
@@ -236,9 +251,9 @@
 
             <!-- 其他信息 -->
             <div id="qita">
-             
-                    <div id="zuobiao">坐标： <span></span></div>
-                
+
+                <div id="zuobiao">坐标： <span></span></div>
+
 
             </div>
 
@@ -256,9 +271,11 @@
 
     </div>
 
-    <script src="./js/initArea.js" type="module"></script>
 
     <script src="./js/index.js" type="module"> </script>
+
+
+    <script src="./js/initArea.js" type="module"></script>
 
     <script src="./js/secArea.js" type="module"> </script>
 

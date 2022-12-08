@@ -1,5 +1,5 @@
-import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint } from "./initArea.js";
-export { toInitPoint , map}
+import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance} from "./initArea.js";
+export { toInitPoint , map }
 
 
 var map = new BMapGL.Map('container', {
@@ -7,6 +7,8 @@ var map = new BMapGL.Map('container', {
     // enableRotate: false,
     // enableTilt: false
 }); // 创建Map实例
+
+
 
 var pointInit = new BMapGL.Point(116.404, 39.915)
 var marker = new BMapGL.Marker(pointInit);        // 创建标注 
@@ -16,6 +18,12 @@ toInitPoint(pointInit)
 // map.centerAndZoom(pointInit, 9); // 初始化地图,设置中心点坐标和地图级别
 map.centerAndZoom(pointInit, 8); // 初始化地图,设置中心点坐标和地图级别
 map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+
+
+//测距功能
+var myDis = new BMapGLLib.DistanceTool(map);
+//绑定测距
+bondDistance(myDis)
 
 // map.setHeading(64.5);   //设置地图旋转角度
 map.setTilt(53);       //设置地图的倾斜角度
@@ -32,6 +40,12 @@ map.addControl(cityCtrl);
 map.setMapStyleV2({
     styleId: '3508e072d1f2f73cbc21be82df6ab6bb'
 });
+
+
+
+
+
+
 
 // ————————————————————————————————————主文件的函数调用
 
@@ -62,8 +76,6 @@ initResetPoint(pointInit, map);
 
 //绑定显示底图事件
 toInitBasemap(map)
-
-
 
 
 
