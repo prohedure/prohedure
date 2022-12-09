@@ -1,4 +1,5 @@
 import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance } from "./initArea.js";
+import { bondCarRoute } from "./qita.js"
 export { toInitPoint, map }
 
 
@@ -107,6 +108,12 @@ bondDistance(myDis)
 
 
 
+// ————————————————————————————————————qita的函数调用
+// 驾车导航
+bondCarRoute(map)
+
+
+
 
 
 // ————————————————————————————————————主文件的函数
@@ -144,6 +151,36 @@ function changeMapType() {
         map.setTilt(70);       //设置地图的倾斜角度
 
         map.setMapType(BMAP_EARTH_MAP);
+    })
+
+    // 隐藏导航和查找功能
+    $('#carInfo,#findInfo').hide()
+
+    $('#carNav').on('click', (e) => {
+        // 切换导航的功能区域
+        $('#mapType2 li').removeClass('active');
+        e.target.parentNode.classList.add("active")
+        var scrollHeight = $('.list-group').prop("scrollHeight");
+        $('.list-group').animate({ scrollTop: scrollHeight }, 500);
+
+        //隐藏information所有内容
+        $('#infomation #infoUl>li').hide()
+
+        $('#carInfo').show()
+
+    })
+    $('#findNav').on('click', (e) => {
+        $('#mapType2 li').removeClass('active');
+        e.target.parentNode.classList.add("active")
+        var scrollHeight = $('.list-group').prop("scrollHeight");
+        $('.list-group').animate({ scrollTop: scrollHeight }, 500);
+
+        $('#infomation #infoUl>li').hide()
+
+        $('#findInfo').show()
+
+
+
     })
 
 }
@@ -186,9 +223,10 @@ function toInitPoint(pointInit) {
 //实现列表交互效果
 function listInteract() {
 
-    $('#main .list-group .list-group-item').next().hide();
-    $('#basicFunc').show()
-    $('#basicFunc').addClass('now');
+    $('#basicFunc,#basicFunc1,#basicFunc2').show()
+    // $('#main .list-group .list-group-item').next().hide();
+    // $('#basicFunc').show()
+    $('#basicFunc,#basicFunc1,#basicFunc2').addClass('now');
 
     //给列表绑定弹出事件
     $('#main .list-group .list-group-item').on('click', (e) => {
@@ -305,7 +343,7 @@ function toInitPoint2(pointInit) {
     //全局变量
     map.addOverlay(marker);
 
-    map.centerAndZoom(pointInit, 8)
+    // map.centerAndZoom(pointInit, 8)
 
     var opts = {
         width: 200,     // 信息窗口宽度
@@ -335,7 +373,7 @@ function searchLocation(map) {
 
         var searchTxt = $("#searchTxt").val();
 
-        console.log(searchTxt);
+        // console.log(searchTxt);
         //创建地址解析器实例
         var myGeo = new BMapGL.Geocoder();
         // 将地址解析结果显示在地图上，并调整地图视野
@@ -352,7 +390,7 @@ function searchLocation(map) {
             } else {
                 alert('您选择的地址没有解析到结果！');
             }
-        }, '北京市')
+        }, searchTxt)
 
 
     })

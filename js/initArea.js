@@ -144,8 +144,6 @@ function initResetPoint(pointInit, map ) {
 }
 
 
-
-// ————————————————————————————————————
 //输入：地图，点，标记
 //绑定checkbox元素，添加初始点缓冲
 function initBuffer(map, pointInit, marker) {

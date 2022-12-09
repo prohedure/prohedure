@@ -1,8 +1,80 @@
 #qita {
-  padding: 8px;
+  padding: 10px;
+  font-size: 13px;
 }
 #qita #zuobiao {
+  position: fixed;
+  left: 80px;
+  top: 55px;
   text-align: center;
   margin: 10px;
-  border: 1px solid #000;
+  border-bottom: 1px solid rgba(197, 190, 190, 0.393);
+  color: rgba(104, 88, 88, 0.676);
+}
+#qita #carInfo .iconfont.icon-xiangshangzhanhang,
+#qita #findInfo .iconfont.icon-xiangshangzhanhang {
+  position: fixed;
+  top: 65px;
+  margin: 0 auto;
+  margin-left: -50px;
+  font-size: 20px;
+  z-index: 999;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 12px 5px -10px rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 12px 5px -10px rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+}
+#qita #carInfo .iconfont.icon-xiangxiazhanhang,
+#qita #findInfo .iconfont.icon-xiangxiazhanhang {
+  position: fixed;
+  top: 95px;
+  margin: 0 auto;
+  margin-left: -50px;
+  font-size: 20px;
+  z-index: 999;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 12px 5px -10px rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 12px 5px -10px rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+}
+#qita #carContent {
+  margin: 5px;
+  width: 100vh;
+}
+#qita #carContent #home,
+#qita #carContent #profile,
+#qita #carContent #messages {
+  padding-top: 9px;
+}
+#qita #carContent #home input,
+#qita #carContent #profile input,
+#qita #carContent #messages input {
+  margin-bottom: 12px;
+  display: inline;
+  width: 210px;
+}
+#qita #carContent #home #searchCarBtn,
+#qita #carContent #profile #searchCarBtn,
+#qita #carContent #messages #searchCarBtn,
+#qita #carContent #home #searchBusBtn,
+#qita #carContent #profile #searchBusBtn,
+#qita #carContent #messages #searchBusBtn,
+#qita #carContent #home #searchFootBtn,
+#qita #carContent #profile #searchFootBtn,
+#qita #carContent #messages #searchFootBtn {
+  margin-left: 11px;
+  width: 192px;
+}
+#qita #carContent #home .searchBtn,
+#qita #carContent #profile .searchBtn,
+#qita #carContent #messages .searchBtn {
+  overflow: auto;
+  margin-top: 17px;
+  width: 252px;
+  height: 70vh;
+  background-color: pink;
 }

@@ -8,6 +8,9 @@
     <title>Document</title>
 
 
+    <!-- 字体图标 -->
+    <link rel="stylesheet" href="./lib/font_3783154_xdb118ex6ng/iconfont.css">
+
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/secArea.css">
     <link rel="stylesheet" href="./css/qita.css">
@@ -32,9 +35,10 @@
     <script type="text/javascript"
         src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=7Cc5Kmn672miPzG4qQhvlOrERcXMMinq"></script>
     <!-- 测距功能 -->
-    <script src="./src/DistanceTool.js"></script>
+    <script src="./lib/DistanceTool.js"></script>
     <!-- 轨迹动画 -->
-    <script type="text/javascript" src="https://mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js"></script>
+    <script type="text/javascript"
+        src="https://mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js"></script>
 
 </head>
 
@@ -61,38 +65,37 @@
                         <li id="satellite"><a href="#">卫星</a></li>
 
                         <li id="map3"><a href="#">地球</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">导航功能<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-
-
-                                <li><a href="#">驾车出行</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">公交出行</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">步行</a></li>
-                            </ul>
                         </li>
                     </ul>
+
+                    <ul id="mapType2" class="nav navbar-nav">
+                        <li id="carNav"><a href="#">导航</a></li>
+                        <li id="findNav"><a href="#">查询</a></li>
+
+
+
+
+                    </ul>
+
                     <form class="navbar-form navbar-left">
                         <div class="form-group">
                             <input id="searchTxt" type="text" class="form-control" placeholder="输入地址">
                         </div>
-                        <button  id="searchLocationbox" type="button" class="btn btn-default">搜索</button>
-                        <button id="myLocationbox" type="button" class="btn btn-default" >定位</button>
+                        <button id="searchLocationbox" type="button" class="btn btn-default">搜索</button>
+                        <button id="myLocationbox" type="button" class="btn btn-default">定位</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Link</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                aria-haspopup="true" aria-expanded="false">帮助 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="./lib/funcStructure.html">地图功能</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
+                                <li><a href="https://map.baidu.com/">百度地图</a></li>
+                                <li><a href="https://lbsyun.baidu.com/">百度地图开放平台</a></li>
+                                <li><a href="https://api.map.baidu.com/lbsapi/getpoint/index.html">拾取坐标系统</a></li>
+
                             </ul>
                         </li>
                     </ul>
@@ -191,9 +194,9 @@
                     <div id="basicFunc1">
 
 
-                        <div id="poiLayer"  class="radio">
+                        <div id="poiLayer" class="radio">
                             <label>
-                                <input type="radio" name="poiInput"  >
+                                <input type="radio" name="poiInput">
                                 兴趣点
                             </label>
                         </div>
@@ -205,7 +208,7 @@
                             </label>
                         </div>
 
-        
+
 
 
                     </div>
@@ -221,24 +224,24 @@
 
                     <!-- 第三模块——内容 -->
                     <div id="basicFunc2">
-                       <div>
+                        <div>
 
-                        <div id="animLayer" class="radio">
-                            <label>
-                                <input type="radio" name="anim" >
-                                动画播放: 自定义视角
-                            </label>
+                            <div id="animLayer" class="radio">
+                                <label>
+                                    <input type="radio" name="anim">
+                                    动画播放: 自定义视角
+                                </label>
+                            </div>
+
+
+                            <div id="animGuijiLayer" class="radio">
+                                <label>
+                                    <input type="radio" name="animGuiji">
+                                    动画播放：轨迹动画
+                                </label>
+                            </div>
+
                         </div>
-
-                        
-                        <div id="animGuijiLayer" class="radio">
-                            <label>
-                                <input type="radio" name="animGuiji" >
-                                动画播放：轨迹动画
-                            </label>
-                        </div>
-
-                       </div>
 
 
 
@@ -250,7 +253,137 @@
             <!-- 其他信息 -->
             <div id="qita">
 
+                <div id="infomation">
+
+                    <ul id="infoUl">
+                        <!-- 交通信息输入 -->
+                        <li id="carInfo">
+
+                            <span class="iconfont icon-xiangshangzhanhang"></span>
+
+                            <span class="iconfont icon-xiangxiazhanhang"></span>
+
+                            <div>
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs nav-sm" role="tablist">
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home"
+                                            role="tab" data-toggle="tab">驾车</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                            data-toggle="tab">公交</a></li>
+                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                            data-toggle="tab">步行</a></li>
+
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div id="carContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="home">
+
+                                        <!-- 驾车信息 -->
+                                        起点：
+                                        <input name=car1 type="text" class="form-control input-sm" placeholder="输入起点">
+
+                                        <br>
+
+                                        <!-- 驾车信息 -->
+                                        终点：
+                                        <input type="text" name=car1  class="form-control input-sm" placeholder="输入终点">
+
+                                        <br>
+
+                                        <button class="btn btn-default btn-sm clear">
+                                            清除
+                                        </button>
+
+                                        <button id="searchCarBtn" class="btn btn-default btn-sm btn-success">
+                                            显示行车路线
+                                        </button>
+
+                                        <div class="searchBtn">
+                                                
+                                        </div>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane" id="profile">
+
+                                        <!-- 驾车信息 -->
+                                        起点：
+                                        <input type="text" class="form-control input-sm" placeholder="输入起点">
+
+                                        <br>
+
+                                        <!-- 驾车信息 -->
+                                        终点：
+                                        <input type="text" class="form-control input-sm" placeholder="输入终点">
+
+                                        <br>
+
+                                        <button class="btn btn-default btn-sm clear">
+                                            清除
+                                        </button>
+
+
+                                        <button id="searchBusBtn" class="btn btn-default btn-sm btn-success">
+                                            公交行驶路线
+                                        </button>
+
+
+                                        <div class="searchBtn">
+                                                
+                                        </div>
+                                    </div>
+
+                                    <div role="tabpanel" class="tab-pane" id="messages">
+
+                                        <!-- 驾车信息 -->
+                                        起点：
+                                        <input type="text" class="form-control input-sm" placeholder="输入起点">
+
+                                        <br>
+
+                                        <!-- 驾车信息 -->
+                                        终点：
+                                        <input type="text" class="form-control input-sm" placeholder="输入终点">
+
+                                        <br>
+
+                                        <button class="btn btn-default btn-sm clear">
+                                            清除
+                                        </button>
+
+
+                                        <button id="searchFootBtn" class="btn btn-default btn-sm btn-success">
+                                            步行路线
+                                        </button>
+
+                                        <div class="searchBtn">
+                                                
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </li>
+
+
+                        <li id="findInfo">
+                            <span class="iconfont icon-xiangshangzhanhang"></span>
+
+                            <span class="iconfont icon-xiangxiazhanhang"></span>
+
+                            2222
+                        </li>
+                    </ul>
+                </div>
+
+
                 <div id="zuobiao">坐标： <span></span></div>
+
+
+
 
 
             </div>
@@ -277,6 +410,7 @@
 
     <script src="./js/secArea.js" type="module"> </script>
     <script src="./js/thirArea.js" type="module"> </script>
+    <script src="./js/qita.js" type="module"> </script>
 
 
 </body>
