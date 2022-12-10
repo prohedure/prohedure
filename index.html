@@ -31,7 +31,25 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- 地图api -->
+    <!-- 高德 -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: 'ed269ff0f553fb0861d2e6493d03c0d2',
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=4329bfd7f43610055d6d1846546796ca">
+    </script>
+    <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
+    <script src="https://webapi.amap.com/maps?v=2.0&key=4329bfd7f43610055d6d1846546796ca&plugin=AMap.Driving">
+
+    </script>
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js">
+
+    </script>
+
+
+    <!-- 百度地图api -->
     <script type="text/javascript"
         src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=7Cc5Kmn672miPzG4qQhvlOrERcXMMinq"></script>
     <!-- 测距功能 -->
@@ -288,11 +306,11 @@
 
                                         <!-- 驾车信息 -->
                                         终点：
-                                        <input type="text" name=car1  class="form-control input-sm" placeholder="输入终点">
+                                        <input type="text" name=car1 class="form-control input-sm" placeholder="输入终点">
 
                                         <br>
 
-                                        <button class="btn btn-default btn-sm clear">
+                                        <button class="btn btn-default btn-sm clear btn-danger">
                                             清除
                                         </button>
 
@@ -300,8 +318,13 @@
                                             显示行车路线
                                         </button>
 
-                                        <div class="searchBtn">
-                                                
+                                        <div class="searchBox">
+                                        </div>
+                                        <div class="searchBox2">
+        
+                                            <div id="gaodeCar"></div>                                    <div id="gaodeContainer" style="display: none;">
+
+                                            </div>
                                         </div>
                                     </div>
 
@@ -319,7 +342,7 @@
 
                                         <br>
 
-                                        <button class="btn btn-default btn-sm clear">
+                                        <button class="btn btn-default btn-sm clear btn-danger">
                                             清除
                                         </button>
 
@@ -329,8 +352,8 @@
                                         </button>
 
 
-                                        <div class="searchBtn">
-                                                
+                                        <div class="searchBox">
+
                                         </div>
                                     </div>
 
@@ -348,7 +371,7 @@
 
                                         <br>
 
-                                        <button class="btn btn-default btn-sm clear">
+                                        <button class="btn btn-default btn-sm clear btn-danger">
                                             清除
                                         </button>
 
@@ -357,8 +380,8 @@
                                             步行路线
                                         </button>
 
-                                        <div class="searchBtn">
-                                                
+                                        <div class="searchBox">
+
                                         </div>
                                     </div>
 

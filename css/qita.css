@@ -69,12 +69,31 @@
   margin-left: 11px;
   width: 192px;
 }
-#qita #carContent #home .searchBtn,
-#qita #carContent #profile .searchBtn,
-#qita #carContent #messages .searchBtn {
+#qita #carContent #home .searchBox,
+#qita #carContent #profile .searchBox,
+#qita #carContent #messages .searchBox {
   overflow: auto;
   margin-top: 17px;
   width: 252px;
-  height: 70vh;
-  background-color: pink;
+}
+#qita #carContent #home .searchBox .resultTitle,
+#qita #carContent #profile .searchBox .resultTitle,
+#qita #carContent #messages .searchBox .resultTitle {
+  text-align: center;
+  margin: 0 auto ;
+  padding: 5px 0;
+  line-height: 30px;
+  background-color: white;
+}
+#qita #carContent #home .searchBox2,
+#qita #carContent #profile .searchBox2,
+#qita #carContent #messages .searchBox2 {
+  overflow: auto;
+  margin-top: 17px;
+  width: 252px;
+}
+#qita #carContent #home .searchBox2 #gaodeCar,
+#qita #carContent #profile .searchBox2 #gaodeCar,
+#qita #carContent #messages .searchBox2 #gaodeCar {
+  height: 48vh ;
 }
