@@ -232,9 +232,6 @@ function bondFootRoute(map) {
 
     $('#searchFootBtn').on('click',  () => {
 
-        
-
-
         let poi1 = $('#messages input').eq(0).val()
         let poi2 = $('#messages input').eq(1).val()
 
@@ -244,7 +241,23 @@ function bondFootRoute(map) {
         var walking = new BMapGL.WalkingRoute(map, {renderOptions: {map: map, panel: "resultFoot", autoViewport: true}});
         walking.search(poi1, poi2);
 
-    
+    })
+
+    $('#messages .clear').on('click', () => {
+        map.clearOverlays();
+
+        $('#messages input').eq(0).val('')
+        $('#messages input').eq(1).val('')
+
+        $('#resultFoot').children().remove()
+
+        // $('#gaodeCar, #gaodeContainer').removeClass()
+
+
+        // $("gaodeContainer").attr("style","");
 
     })
+
+
+
 }
