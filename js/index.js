@@ -1,5 +1,5 @@
 import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance } from "./initArea.js";
-import { bondCarRoute } from "./qita.js"
+import { bondCarRoute ,bondBusRoute } from "./qita.js"
 export { toInitPoint, map }
 
 
@@ -111,6 +111,9 @@ bondDistance(myDis)
 // ————————————————————————————————————qita的函数调用
 // 驾车导航
 bondCarRoute(map)
+
+// 公交导航
+bondBusRoute(map)
 
 
 

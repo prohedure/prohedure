@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/secArea.css">
-    <link rel="stylesheet" href="./css/qita.css">
 
     <!-- <script type="text/javascript"
         src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=gGh3qeOj82gsSO27xMD4GuW3aOb9S7ne">
@@ -37,8 +36,7 @@
             securityJsCode: 'ed269ff0f553fb0861d2e6493d03c0d2',
         }
     </script>
-    <script type="text/javascript"
-        src="https://webapi.amap.com/maps?v=1.4.15&key=4329bfd7f43610055d6d1846546796ca">
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=4329bfd7f43610055d6d1846546796ca">
     </script>
     <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
     <script src="https://webapi.amap.com/maps?v=2.0&key=4329bfd7f43610055d6d1846546796ca&plugin=AMap.Driving">
@@ -57,6 +55,9 @@
     <!-- 轨迹动画 -->
     <script type="text/javascript"
         src="https://mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js"></script>
+
+    <link rel="stylesheet" href="./css/qita.css">
+
 
 </head>
 
@@ -321,8 +322,9 @@
                                         <div class="searchBox">
                                         </div>
                                         <div class="searchBox2">
-        
-                                            <div id="gaodeCar"></div>                                    <div id="gaodeContainer" style="display: none;">
+
+                                            <div id="gaodeCar"></div>
+                                            <div id="gaodeContainer" style="display: none;">
 
                                             </div>
                                         </div>
@@ -352,8 +354,22 @@
                                         </button>
 
 
-                                        <div class="searchBox">
+                                        <!-- <div class="searchBox">
 
+                                        </div> -->
+                                        <div class="searchBox2">
+                                            <div id="driving_way">
+                                                <select>
+                                                    <!-- <option value="0">推荐方案</option> -->
+                                                    <option value="1">最少时间</option>
+                                                    <option value="2">最少换乘</option>
+                                                    <option value="3">最少步行</option>
+                                                    <option value="4">不乘地铁</option>
+                                                    <option value='5'>优先地铁</option>
+                                                </select>
+                               
+                                                <p id='result'></p>
+                                            </div>
                                         </div>
                                     </div>
 
