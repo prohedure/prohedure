@@ -1,7 +1,19 @@
 export { bondCarRoute, bondBusRoute }
+import { map } from "./index.js";
 
-
+// 置顶底部按钮
 updown()
+
+// 驾车导航
+bondCarRoute(map)
+
+// 公交导航
+bondBusRoute(map)
+
+// 步行导航
+bondFootRoute(map)
+
+
 
 // ——————————————————————————————————————置顶底部按钮
 function updown() {
@@ -146,7 +158,7 @@ async function getJingwei(searchTxt) {
 
 // ——————————————————————————————————————公交导航
 function bondBusRoute(map) {
-    
+
     $('#driving_way select').addClass('btn-sm')
 
 
@@ -164,7 +176,7 @@ function bondBusRoute(map) {
         // console.log(r1, r2);
 
         // 百度公交查询
-           //"北京邮电大学西门";
+        //"北京邮电大学西门";
         var routePolicy = [BMAP_TRANSIT_POLICY_RECOMMEND, BMAP_TRANSIT_POLICY_LEAST_TIME, BMAP_TRANSIT_POLICY_LEAST_TRANSFER, BMAP_TRANSIT_POLICY_LEAST_WALKING, BMAP_TRANSIT_POLICY_AVOID_SUBWAYS, BMAP_TRANSIT_POLICY_FIRST_SUBWAYS];
         var transit = new BMapGL.TransitRoute(map, {
             renderOptions: { map: map, panel: 'result' },
@@ -190,7 +202,7 @@ function bondBusRoute(map) {
                 transit.search(start, end);
             }
 
-            $('#driving_way result').css("padding","0")
+            $('#driving_way result').css("padding", "0")
         });
 
 
@@ -213,4 +225,26 @@ function bondBusRoute(map) {
 
 
 
+}
+
+// ——————————————————————————————————————步行导航
+function bondFootRoute(map) {
+
+    $('#searchFootBtn').on('click',  () => {
+
+        
+
+
+        let poi1 = $('#messages input').eq(0).val()
+        let poi2 = $('#messages input').eq(1).val()
+
+
+
+
+        var walking = new BMapGL.WalkingRoute(map, {renderOptions: {map: map, panel: "resultFoot", autoViewport: true}});
+        walking.search(poi1, poi2);
+
+    
+
+    })
 }

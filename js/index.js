@@ -108,12 +108,7 @@ bondDistance(myDis)
 
 
 
-// ————————————————————————————————————qita的函数调用
-// 驾车导航
-bondCarRoute(map)
 
-// 公交导航
-bondBusRoute(map)
 
 
 
