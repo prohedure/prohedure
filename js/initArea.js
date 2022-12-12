@@ -1,5 +1,5 @@
-export { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance}
-import {toInitPoint} from "./index.js";
+export { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance, bondTestTool , bondXZQ}
+import { toInitPoint, map } from "./index.js";
 
 
 
@@ -18,6 +18,9 @@ function initAreaBegin(map) {
         map.setCenter(116.404, 39.915)
         //
         $('#bufferFunc input').val("");
+
+        
+
     })
 
 
@@ -29,7 +32,7 @@ function initAreaBegin(map) {
 // ————————————————————————————————————经纬度
 // 输入：地图，
 //绑定事件，获取经纬度更新pointinit
-function initResetPoint(pointInit, map ) {
+function initResetPoint(pointInit, map) {
 
     // 0 延时器id
     let timer = null;
@@ -75,7 +78,7 @@ function initResetPoint(pointInit, map ) {
                 return
             }
 
-            $("#initBasemapForm1 button").click( (e) => {
+            $("#initBasemapForm1 button").click((e) => {
 
 
 
@@ -84,7 +87,7 @@ function initResetPoint(pointInit, map ) {
                 nowWei = wei
                 // return [nowJing, nowWei]
                 console.log(nowJing, nowWei);
-                getResetPointToDo( nowWei,nowJing, pointInit)
+                getResetPointToDo(nowWei, nowJing, pointInit)
             })
 
         }, 700)
@@ -96,13 +99,13 @@ function initResetPoint(pointInit, map ) {
 
     function getResetPointToDo(wei, jing, pointInit) {
 
-        pointInit = new BMapGL.Point( jing,wei)
+        pointInit = new BMapGL.Point(jing, wei)
         // console.log(pointInit);
 
         //调用
         toInitPoint(pointInit)
 
-        let marker = new BMapGL.Marker(pointInit);  
+        let marker = new BMapGL.Marker(pointInit);
 
         //绑定缓冲
         initBuffer(map, pointInit, marker)
@@ -209,11 +212,11 @@ function toInitBasemap(map) {
                 showOneProvince(nowCity, map)
 
                 //调用 根据地址获取经纬度
-                let [poi,mkr] = getGeoInfo(nowCity, nowCity, map)
+                let [poi, mkr] = getGeoInfo(nowCity, nowCity, map)
 
                 console.log(poi, mkr);
 
-            
+
 
             });
 
@@ -240,7 +243,7 @@ function toInitBasemap(map) {
 //输入：地名
 // 根据地址获取经纬度 定位到点
 function getGeoInfo(address, city, map) {
-    let point,marker
+    let point, marker
     //创建地址解析器实例
     var myGeo = new BMapGL.Geocoder();
     // 将地址解析结果显示在地图上，并调整地图视野
@@ -259,7 +262,7 @@ function getGeoInfo(address, city, map) {
         }
     }, city)
 
-    return [point,marker]
+    return [point, marker]
 
 }
 
@@ -324,4 +327,137 @@ function bondDistance(myDis) {
     $('#openDis').on('click', () => {
         myDis.open()
     })
+}
+
+// ————————————————————————————————————左键获取行政区功能
+function bondXZQ(map) {
+    // $('#showXZQ').on('', () => {
+
+    // // 点击显示省市区
+    // map.addEventListener('click',XZQ);
+    // map.removeEventListener("click",XZQ,false);
+    // })
+
+
+    // 为输入框添加click事件
+       var clickNum = 0
+       $('#showXZQ').click(function(){
+            if(clickNum == 0){
+                map.addEventListener('click',XZQ);
+               clickNum = 1;
+            //    return false;
+            }else{
+                map.removeEventListener("click",XZQ,false);
+                 clickNum = 0;
+            //    return false;
+            };
+       });
+
+}
+
+function XZQ(e){
+  
+        var point = new BMapGL.Point(e.latlng.lng, e.latlng.lat);
+        var gc = new BMapGL.Geocoder();
+        gc.getLocation(point, function (rs) {
+            var opts = {
+                title: '行政区划归属',
+                width: 220,
+                height: 92
+            };
+            var infoStr = '<div>省：' + rs.addressComponents.province + '</div>'
+                + '<div>市：' + rs.addressComponents.city + '</div>'
+                + '<div>区：' + rs.addressComponents.district + '</div>';
+            var infoWindow = new BMapGL.InfoWindow(infoStr, opts);
+            map.openInfoWindow(infoWindow, point);
+        });
+    
+}
+
+
+// ————————————————————————————————————测量工具条功能
+function bondTestTool(map) {
+
+    var styleOptions = {
+        strokeColor: '#5E87DB',   // 边线颜色
+        fillColor: '#5E87DB',     // 填充颜色。当参数为空时，圆形没有填充颜色
+        strokeWeight: 2,          // 边线宽度，以像素为单位
+        strokeOpacity: 1,         // 边线透明度，取值范围0-1
+        fillOpacity: 0.2          // 填充透明度，取值范围0-1
+    };
+    var labelOptions = {
+        borderRadius: '2px',
+        background: '#FFFBCC',
+        border: '1px solid #E1E1E1',
+        color: '#703A04',
+        fontSize: '12px',
+        letterSpacing: '0',
+        padding: '5px'
+    };
+
+    // 实例化鼠标绘制工具
+    var drawingManager = new BMapGLLib.DrawingManager(map, {
+        // isOpen: true,        // 是否开启绘制模式
+        enableCalculate: false, // 绘制是否进行测距测面
+        enableSorption: true,   // 是否开启边界吸附功能
+        sorptiondistance: 20,   // 边界吸附距离
+        circleOptions: styleOptions,     // 圆的样式
+        polylineOptions: styleOptions,   // 线的样式
+        polygonOptions: styleOptions,    // 多边形的样式
+        rectangleOptions: styleOptions,  // 矩形的样式
+        labelOptions: labelOptions,      // label样式
+    });
+
+    $('#testToolGroup #marker').on('click', function () {
+        draw(this)
+    })
+    $('#testToolGroup #polyline').on('click', function () {
+        draw(this)
+    })
+    $('#testToolGroup #rectangle').on('click', function () {
+        draw(this)
+    })
+    $('#testToolGroup #polygon').on('click', function () {
+        draw(this)
+    })
+    $('#testToolGroup #circle').on('click', function () {
+        draw(this)
+    })
+
+    function draw(e) {
+        var arr = document.getElementsByClassName('bmap-btn');
+        for (var i = 0; i < arr.length; i++) {
+            arr[i].style.backgroundPositionY = '0';
+        }
+        e.style.backgroundPositionY = '-52px';
+        switch (e.id) {
+            case 'marker': {
+                var drawingType = BMAP_DRAWING_MARKER;
+                break;
+            }
+            case 'polyline': {
+                var drawingType = BMAP_DRAWING_POLYLINE;
+                break;
+            }
+            case 'rectangle': {
+                var drawingType = BMAP_DRAWING_RECTANGLE;
+                break;
+            }
+            case 'polygon': {
+                var drawingType = BMAP_DRAWING_POLYGON;
+                break;
+            }
+            case 'circle': {
+                var drawingType = BMAP_DRAWING_CIRCLE;
+                break;
+            }
+        }
+        // 进行绘制
+        if (drawingManager._isOpen && drawingManager.getDrawingMode() === drawingType) {
+            drawingManager.close();
+        } else {
+            drawingManager.setDrawingMode(drawingType);
+            drawingManager.open();
+        }
+    };
 }

@@ -58,8 +58,12 @@
     <!-- 路书 -->
     <script type="text/javascript"
         src="https://bj.bcebos.com/v1/mapopen/github/BMapGLLib/Lushu/src/Lushu.min.js"></script>
+    <!-- 画图测距功能 -->
+    <script type="text/javascript"
+        src="http://mapopen.bj.bcebos.com/github/BMapGLLib/DrawingManager/src/DrawingManager.js"></script>
+    <link rel="stylesheet" href="http://mapopen.bj.bcebos.com/github/BMapGLLib/DrawingManager/src/DrawingManager.css">
 
-        
+
     <link rel="stylesheet" href="./css/qita.css">
 
 
@@ -108,7 +112,7 @@
                         <button id="myLocationbox" type="button" class="btn btn-default">定位</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Link</a></li>
+                        <!-- <li><a href="#">Link</a></li> -->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false">帮助 <span class="caret"></span></a>
@@ -195,11 +199,23 @@
 
                         <!-- 测试测距功能 -->
                         <input id="openDis" class="btn btn-default btn-sm" type="button" value="测距">
+
+                        <input id="showXZQ" class="btn btn-default btn-sm" type="button" value="行政信息功能">
                         <!-- <input id="closeDis" type="button" value="X" > -->
+                        <div id="testToolGroup">
+                            <ul class="drawing-panel">
+                                <li class="bmap-btn bmap-marker" id="marker" ></li>
+                                <li class="bmap-btn bmap-polyline" id="polyline" ></li>
+                                <li class="bmap-btn bmap-rectangle" id="rectangle" ></li>
+                                <li class="bmap-btn bmap-polygon" id="polygon" ></li>
+                                <li class="bmap-btn bmap-circle" id="circle" ></li>
+                            </ul>
+                        </div>
 
 
 
-                        <button id="initClear" type="button" class="btn btn-default btn-sm">清空/重置</button>
+
+                        <button id="initClear" type="button" class="btn btn-default btn-sm">清空标记</button>
 
 
                     </div>
@@ -230,10 +246,10 @@
                                 交通路线
                             </label>
                         </div>
-                <div id="wmsLayer" class="radio">
+                        <div id="wmsLayer" class="radio">
                             <label>
                                 <input type="radio" name="wmsData" value="option1">
-                               WMS数据
+                                WMS数据
                             </label>
                         </div>
                         <div id="geojsonLayer" class="radio">
@@ -243,10 +259,10 @@
                             </label>
                         </div>
 
-                        
-        
 
-                                               
+
+
+
                         <!-- <div id="wmtsLayer" class="radio">
                             <label>
                                 <input type="radio" name="wmtsData" value="option1">
@@ -283,16 +299,16 @@
                             <div id="animGuijiLayer" class="radio">
                                 <label>
                                     <input type="radio" name="animGuiji">
-                                   轨迹动画
+                                    轨迹动画
                                 </label>
                             </div>
 
-                            
+
 
                             <div id="lushuLayer" class="radio">
                                 <label>
                                     <input type="radio" name="animLushu">
-                                   路书
+                                    路书
                                 </label>
                             </div>
 
@@ -396,7 +412,7 @@
                                         </div> -->
                                         <div class="searchBox2">
                                             <div id="driving_way">
-                                                <select >
+                                                <select>
                                                     <!-- <option value="0">推荐方案</option> -->
                                                     <option value="1">最少时间</option>
                                                     <option value="2">最少换乘</option>
@@ -404,7 +420,7 @@
                                                     <option value="4">不乘地铁</option>
                                                     <option value='5'>优先地铁</option>
                                                 </select>
-                               
+
                                                 <p id='result'></p>
                                             </div>
                                         </div>
@@ -439,7 +455,7 @@
 
                                         <div class="searchBox" id="resultFoot"></div>
 
-                                        
+
                                     </div>
 
                                 </div>

@@ -1,6 +1,19 @@
 html {
   height: 100%;
 }
+body,
+button,
+input,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
 body {
   height: 100%;
   margin: 0px;
@@ -56,6 +69,7 @@ li {
   height: 1900px;
   background-color: #fff;
   overflow: auto;
+  font-weight: 800;
   /* 设置滚动条的样式 */
   /* 滚动槽 */
   /* 滚动条滑块 */
@@ -107,8 +121,49 @@ li {
 #main .list-group #basicFunc #huanchong #bufferFunc {
   font-weight: normal;
 }
-#main .list-group #basicFunc #openDis {
-  margin-top: 5px;
+#main .list-group #basicFunc #openDis,
+#main .list-group #basicFunc #showXZQ {
+  display: inline-block;
+  margin: 5px 5px;
+  margin-top: 8px;
+  width: 45%;
+}
+#main .list-group #basicFunc #testToolGroup ul {
+  padding: 0;
+}
+#main .list-group #basicFunc #testToolGroup ul li {
+  list-style: none;
+}
+#main .list-group #basicFunc #testToolGroup .drawing-panel {
+  margin-top: 10px;
+  border-radius: 0.25rem;
+  height: 47px;
+  width: 100%;
+  box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
+}
+#main .list-group #basicFunc #testToolGroup .bmap-btn {
+  border-right: 1px solid #d2d2d2;
+  float: left;
+  width: 52px;
+  height: 100%;
+  background-image: url(//api.map.baidu.com/library/DrawingManager/1.4/src/bg_drawing_tool.png);
+  background-position: 0 5px;
+  cursor: pointer;
+}
+#main .list-group #basicFunc #testToolGroup .drawing-panel .bmap-marker {
+  background-position: -72px 0;
+}
+#main .list-group #basicFunc #testToolGroup .drawing-panel .bmap-polyline {
+  background-position: -201px 0;
+}
+#main .list-group #basicFunc #testToolGroup .drawing-panel .bmap-rectangle {
+  background-position: -333px 0;
+}
+#main .list-group #basicFunc #testToolGroup .drawing-panel .bmap-polygon {
+  background-position: -267px 0;
+}
+#main .list-group #basicFunc #testToolGroup .drawing-panel .bmap-circle {
+  background-position: -136px 0;
 }
 #main .list-group #basicFunc #initClear {
   margin-top: 8px;
@@ -141,6 +196,10 @@ li {
 #main .list-group #basicFunc #initBasemapForm button,
 #main .list-group #basicFunc #initBasemapForm1 button {
   font-weight: normal;
+}
+#main .list-group #basicFunc1 .radio,
+#main .list-group #basicFunc2 .radio {
+  margin: 11.5px 0;
 }
 #main .list-group #qita {
   height: 100%;

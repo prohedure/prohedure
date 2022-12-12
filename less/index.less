@@ -1,6 +1,8 @@
 html {
     height: 100%
+
 }
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
 
 body {
     height: 100%;
@@ -70,6 +72,7 @@ ul{
         height: 1900px;
         background-color: #fff;
         overflow: auto;
+        font-weight: 800;
 
         .list-group-item span {
             margin-top: 6px;
@@ -145,10 +148,57 @@ ul{
     
             }
 
-            #openDis{
-                margin-top: 5px;
+            #openDis,#showXZQ{
+    
+    display: inline-block;
+                margin: 5px 5px;
+                margin-top: 8px;
+                width: 45%;
 
             }
+
+
+            // 测量工具条
+            #testToolGroup{
+                ul{
+                    padding: 0;
+                }
+                ul li {list-style: none;}
+
+                .drawing-panel {
+                    margin-top: 10px;
+                    border-radius: .25rem;
+                    height: 47px;
+                    width: 100%;
+                    box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
+                }
+                .bmap-btn {
+                    border-right: 1px solid #d2d2d2;
+                    float: left;
+                    width: 52px;
+                    height: 100%;
+                    background-image: url(//api.map.baidu.com/library/DrawingManager/1.4/src/bg_drawing_tool.png);
+                    background-position: 0 5px;
+                    cursor: pointer;
+                }
+                .drawing-panel .bmap-marker {
+                    background-position: -72px 0;
+                }
+                .drawing-panel .bmap-polyline {
+                    background-position: -201px 0;
+                }
+                .drawing-panel .bmap-rectangle {
+                    background-position: -333px 0;
+                }
+                .drawing-panel .bmap-polygon {
+                    background-position: -267px 0;
+                }
+                .drawing-panel .bmap-circle {
+                    background-position: -136px 0;
+                }
+            }
+
+
             #initClear {
                 margin-top: 8px;
                 margin-bottom: 10px;
@@ -198,6 +248,14 @@ ul{
 
         }
 
+
+
+#basicFunc1,#basicFunc2{
+    .radio{
+        margin: 11.5px 0;
+    }
+    
+}
         
 
 

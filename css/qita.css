@@ -11,6 +11,10 @@
   border-bottom: 1px solid rgba(197, 190, 190, 0.393);
   color: rgba(104, 88, 88, 0.676);
 }
+#qita #carInfo,
+#qita #findInfo {
+  font-family: '微软雅黑', 'sans-serif';
+}
 #qita #carInfo .iconfont.icon-xiangshangzhanhang,
 #qita #findInfo .iconfont.icon-xiangshangzhanhang {
   position: fixed;
@@ -40,6 +44,10 @@
   -webkit-box-shadow: 0 12px 5px -10px rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   cursor: pointer;
+}
+#qita #carInfo .nav li,
+#qita #findInfo .nav li {
+  font-weight: 700 !important;
 }
 #qita #carContent {
   margin: 5px;

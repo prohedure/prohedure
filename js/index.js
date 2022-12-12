@@ -1,4 +1,4 @@
-import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance } from "./initArea.js";
+import { initAreaBegin, initBuffer, toInitBasemap, initResetPoint, bondDistance,bondTestTool , bondXZQ} from "./initArea.js";
 import { bondCarRoute ,bondBusRoute,bondFootRoute} from "./qita.js"
 export { toInitPoint, map }
 
@@ -44,23 +44,6 @@ map.setMapStyleV2({
 //测距功能
 var myDis = new BMapGLLib.DistanceTool(map);
 
-// 点击显示省市区
-map.addEventListener('click', function (e) {
-    var point = new BMapGL.Point(e.latlng.lng, e.latlng.lat);
-    var gc = new BMapGL.Geocoder();
-    gc.getLocation(point, function (rs) {
-        var opts = {
-            title: '行政区划归属',
-            width: 220,
-            height: 92
-        };
-        var infoStr = '<div>省：' + rs.addressComponents.province + '</div>'
-            + '<div>市：' + rs.addressComponents.city + '</div>'
-            + '<div>区：' + rs.addressComponents.district + '</div>';
-        var infoWindow = new BMapGL.InfoWindow(infoStr, opts);
-        map.openInfoWindow(infoWindow, point);
-    });
-});
 
 
 
@@ -107,6 +90,11 @@ toInitBasemap(map)
 //绑定测距
 bondDistance(myDis)
 
+//绑定测距工具条
+bondTestTool(map)
+
+// 左键获取行政区功能
+bondXZQ(map)
 
 
 
