@@ -55,7 +55,11 @@
     <!-- 轨迹动画 -->
     <script type="text/javascript"
         src="https://mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js"></script>
+    <!-- 路书 -->
+    <script type="text/javascript"
+        src="https://bj.bcebos.com/v1/mapopen/github/BMapGLLib/Lushu/src/Lushu.min.js"></script>
 
+        
     <link rel="stylesheet" href="./css/qita.css">
 
 
@@ -89,7 +93,7 @@
 
                     <ul id="mapType2" class="nav navbar-nav">
                         <li id="carNav"><a href="#">导航</a></li>
-                        <li id="findNav"><a href="#">查询</a></li>
+                        <!-- <li id="findNav"><a href="#">查询</a></li> -->
 
 
 
@@ -216,7 +220,7 @@
                         <div id="poiLayer" class="radio">
                             <label>
                                 <input type="radio" name="poiInput">
-                                兴趣点
+                                兴趣点和标签
                             </label>
                         </div>
 
@@ -226,6 +230,29 @@
                                 交通路线
                             </label>
                         </div>
+                <div id="wmsLayer" class="radio">
+                            <label>
+                                <input type="radio" name="wmsData" value="option1">
+                               WMS数据
+                            </label>
+                        </div>
+                        <div id="geojsonLayer" class="radio">
+                            <label>
+                                <input type="radio" name="geojsonData" value="option1">
+                                GeoJSON数据
+                            </label>
+                        </div>
+
+                        
+        
+
+                                               
+                        <!-- <div id="wmtsLayer" class="radio">
+                            <label>
+                                <input type="radio" name="wmtsData" value="option1">
+                               WMTS数据
+                            </label>
+                        </div> -->
 
 
 
@@ -237,7 +264,7 @@
                 <div>
 
                     <!-- 第三模块——标题 -->
-                    <button type="button" class="list-group-item">扩展功能<span class="caret pull-right"></span>
+                    <button type="button" class="list-group-item">扩展<span class="caret pull-right"></span>
                     </button>
 
 
@@ -248,7 +275,7 @@
                             <div id="animLayer" class="radio">
                                 <label>
                                     <input type="radio" name="anim">
-                                    动画播放: 自定义视角
+                                    自定义视角动画
                                 </label>
                             </div>
 
@@ -256,9 +283,19 @@
                             <div id="animGuijiLayer" class="radio">
                                 <label>
                                     <input type="radio" name="animGuiji">
-                                    动画播放：轨迹动画
+                                   轨迹动画
                                 </label>
                             </div>
+
+                            
+
+                            <div id="lushuLayer" class="radio">
+                                <label>
+                                    <input type="radio" name="animLushu">
+                                   路书
+                                </label>
+                            </div>
+
 
                         </div>
 
